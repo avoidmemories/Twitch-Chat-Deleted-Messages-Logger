@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Chat Logger — Deleted Messages",
+  "version": "1.3.0",
+  "description": "Restores and highlights Twitch chat messages deleted by moderators, right inside the native chat. Click the icon or use the right-click menu to open a draggable panel listing every deleted message.",
+  "permissions": ["tabs", "alarms", "contextMenus"],
+  "host_permissions": [
+    "https://www.twitch.tv/*",
+    "https://api.betterttv.net/*",
+    "https://api.frankerfacez.com/*",
+    "https://7tv.io/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Show/hide deleted messages window",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.twitch.tv/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
